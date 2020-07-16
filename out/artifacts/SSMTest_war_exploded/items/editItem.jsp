@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<%@ taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,35 +11,25 @@
 	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/js/jquery-1.11.0.min.js"></script>
 </head>
-<script type="text/javascript">
-	function getid() {
-		var url = location.search; //获取url中"?"符后的字串
-		if (url.indexOf("?") != -1) {    //判断是否有参数
-			var str = url.substr(1); //从第一个字符开始 因为第0个是?号 获取所有除问号的所有符串
-			strs = str.split("=");
-			document.getElementById('id').value=strs[1];
-		}
-	}
-</script>
 <body>
 <div class="container" style="margin-top: 100px">
 	<h2 class="form-group">修改商品</h2>
-	<form id="f" action="${pageContext.request.contextPath}/items/edit.action" method="post" enctype="multipart/form-data">
+	<form id="f" action="${pageContext.request.contextPath}/items/edit.action" method="post" enctype="multipart/form-data" items="${vo.itemsList}" var="items">
 		<div class="form-group" hidden="hidden">
 			<label for="id">商品id</label>
-			<input type="text" class="form-control" id="id" placeholder="id" name="id" >
+			<input type="text" class="form-control" id="id" placeholder="id" name="id" value="${items.id}">
 		</div>
 		<div class="form-group">
 			<label for="name">商品名称</label>
-			<input type="text" class="form-control" id="name" placeholder="name" name="name" required="required">
+			<input type="text" class="form-control" id="name" placeholder="name" name="name" required="required" value="${items.name}">
 		</div>
 		<div class="form-group">
 			<label for="detail">商品描述</label>
-			<input type="text" class="form-control" id="detail" placeholder="desc" name="detail">
+			<input type="text" class="form-control" id="detail" placeholder="desc" name="detail" value="${items.detail}">
 		</div>
 		<div class="form-group">
 			<label for="price">商品价格</label>
-			<input type="text" class="form-control" id="price" placeholder="price" name="price" required="required">
+			<input type="text" class="form-control" id="price" placeholder="price" name="price" required="required" value="${items.price}">
 		</div>
 		<div class="form-group">
 			<label for="pic">商品图片</label>

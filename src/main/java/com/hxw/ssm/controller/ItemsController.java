@@ -73,7 +73,6 @@ public class ItemsController {
         if(file!=null){
             //获得原始图片名称
             String oldName = file.getOriginalFilename();
-            System.out.println("oldName = "+oldName);
             //当前若上传图片
             if(oldName!=null && oldName.length()>0){
                 //产生新的图片名称 = 随机数+原图片的后缀
@@ -86,6 +85,12 @@ public class ItemsController {
                 items.setPic("/pic/"+newName);
             }
         }
+
+        String itemsPic = items.getPic();
+        if(itemsPic==null){
+            String pic = service.findone(items.getId()).getPic();
+            items.setPic(pic);
+        }
         service.edit(items);
         return "redirect:findAll.action";
     }
@@ -94,6 +99,13 @@ public class ItemsController {
     public String deleteAll(){
         service.delall();
         return "redirect:findAll.action";
+    }
+
+    @RequestMapping("/findOne.action")
+    public String findOne(Integer id,Model model){
+        Items items = service.findone(id);
+        model.addAttribute("items",items);
+        return "editItem.jsp";
     }
 
     @RequestMapping("/deleteOne.action")

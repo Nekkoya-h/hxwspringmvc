@@ -69,4 +69,8 @@ public class ItemsService {
         mapper.deleteByPrimaryKey(id);
     }
 
+    public Items findone(Integer id){
+        return mapper.selectByPrimaryKey(id);
+    }
+
 }

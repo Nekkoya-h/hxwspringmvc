@@ -14,7 +14,7 @@
 	<div class="container" style="margin-top: 100px">
 		<h2 class="form-group">添加商品</h2>
 		<%-- enctype="multipart/form-data" 表单将以二进制数据传递 --%>
-		<form id="f" action="${pageContext.request.contextPath}/items/add.action" method="post" enctype="multipart/form-data">
+		<form id="f" action="${pageContext.request.contextPath}/items/add.action" method="post" enctype="multipart/form-data" >
 			<div class="form-group" hidden="hidden">
 				<label for="id">商品id</label>
 				<input type="text" class="form-control" id="id" placeholder="id" name="id">

@@ -54,7 +54,7 @@
 						</c:if>
 					</td>
 					<td>
-						<a href="editItem.jsp?ID=${items.id}" class="btn btn-info">修改</a>|
+						<a href="${pageContext.request.contextPath}/items/findOne.action?id=${items.id}" class="btn btn-info">修改</a>|
 						<a href="${pageContext.request.contextPath}/items/deleteOne.action?id=${items.id}" class="btn btn-danger">删除</a>
 					</td>
 				</tr>
